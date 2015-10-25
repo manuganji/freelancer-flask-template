@@ -457,3 +457,11 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+div.team-member {
+    
+}
+
+div.team-member .img-circle {
+    max-width: 200px;
+}
