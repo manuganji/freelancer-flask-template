@@ -1,8 +1,9 @@
 from flask import Flask
 from flask import json
+from flask import render_template
 from flask import request
 from jinja2 import Environment, PackageLoader
-from forms import ContactForm
+from forms import ContactForm, ServiceForm
 from flask_mail import Mail, Message
 
 env = Environment(loader=PackageLoader('agency', 'templates'))
@@ -35,8 +36,7 @@ portfolios = [
 
 @app.route("/")
 def index():
-    template = env.get_template("index.html")
-    return template.render(
+    return render_template("index.html",
         portfolios=portfolios,
         team = team
     )
@@ -52,10 +52,31 @@ def contact():
             reply_to=form.email.data,
             html=form.message.data
         )
+        # mail.send(msg)
+        return "valid data"
+    else:
+        return json.dumps(form.errors), 400
+
+@app.route("/service-contact/", methods=['POST'])
+def service_contact():
+    form = ServiceForm(request.form)
+    if form.validate():
+        msg = Message(
+            subject="Service contact form msg from "+form.name.data,
+            sender="manuganji@gmail.com",
+            recipients=["manuganji@gmail.com"],
+            reply_to=form.email.data,
+            html=render_template('service_email.html', **form.data)
+        )
         mail.send(msg)
         return "valid data"
     else:
         return json.dumps(form.errors), 400
+
+
+@app.route("/android-services/", methods=['GET'])
+def android():
+    return render_template("android.html", portfolios=portfolios, service_name="android")
 
 if __name__ == "__main__":
     app.run()

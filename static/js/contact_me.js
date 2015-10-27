@@ -11,24 +11,16 @@ $(function() {
             event.preventDefault();
             
             // get values from FORM
-            var name = $("input#name").val();
-            var email = $("input#email").val();
-            var phone = $("input#phone").val();
-            var message = $("textarea#message").val();
+            var name = $("input[name='name']").val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "/contact/",
-                type: "POST",
-                data: {
-                    name: name,
-                    phone: phone,
-                    email: email,
-                    message: message
-                },
+                url: $form[0].action,
+                type: $form[0].method,
+                data: $form.serialize(),
                 cache: false,
                 success: function() {
                     // Enable button & show success message
@@ -42,7 +34,7 @@ $(function() {
                         .append('</div>');
 
                     //clear all fields
-                    $('#contactForm').trigger("reset");
+                    $form.trigger("reset");
                 },
                 error: function() {
                     // Fail message
@@ -52,7 +44,6 @@ $(function() {
                     $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
-                    // $('#contactForm').trigger("reset");
                 },
             })
         },

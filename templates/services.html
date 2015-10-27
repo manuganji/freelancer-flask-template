@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% from 'portfolio.html' import portfoliomodal, portfolioitem %}
+{% from 'team.html' import person %}
+{% block title %}Home{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+<div class="container" style="margin-top:50px;">
+<section>
+    <div class="container">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>{% block service_title %}
+                {% endblock %}</h3>
+                <div class="row">
+                {% block pitch %} 
+                {% endblock %}
+                </div>
+                <h4>Portfolio</h4>
+                {% for portfolio in portfolios %}
+                    {{ portfolioitem(loop.index, portfolio.image) }}
+                {% endfor %}
+            </div>
+
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h4>Get in touch</h4>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <form action="/service-contact/" method="POST" name="sentMessage" id="serviceContactForm" novalidate>
+                    <div class="row control-group hide">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <input type="text" class="form-control" placeholder="Name" name="service" value="{{service_name}}">
+                        </div>
+                    </div>
+
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Name" name="name" required data-validation-required-message="Please enter your name.">
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="Email Address" name="email" required data-validation-required-message="Please enter your email address.">
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required data-validation-required-message="Please enter your phone number.">
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Location</label>
+                            <input type="text" class="form-control" placeholder="Location" name="location" required data-validation-required-message="Please enter your location.">
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Description</label>
+                            <textarea rows="5" class="form-control" placeholder="Give us a high level overview about your project" name="overview" required data-validation-required-message="Please give us an overview."></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Project Progress</label>
+                            <textarea rows="5" class="form-control" placeholder="What is the current status of this project?" name="status"></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Expectations</label>
+                            <textarea rows="5" class="form-control" placeholder="How do you think we can help you with this project?" name="expectations" required data-validation-required-message="Please tell us your expecations"></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Priority</label>
+                            <input type="text" class="form-control" placeholder="Priority? Code Quality, Build Speed, etc" name="priority" required data-validation-required-message="Please tell us your priorities for this project"></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Budget</label>
+                            <input type="text" class="form-control" placeholder="What is the budget (or budget range) ?" name="budget" required data-validation-required-message="Please indicate your budget range for this project"></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>Timeline</label>
+                            <input type="text" class="form-control" placeholder="How soon do you want the delivery?" name="timeline" required data-validation-required-message="Please indicate your estimated timeline for the project delivery"></textarea>
+                            <p class="help-block text-warning"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <button type="submit" class="btn btn-success btn-lg">Send</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% for portfolio in portfolios %}
+    {{ portfoliomodal(loop.index, portfolio.title, portfolio.image, portfolio.description, portfolio.client_name, portfolio.client_url, portfolio.date, portfolio.service) }}
+{% endfor %}
+
+</div>
+{% endblock %}
