@@ -78,5 +78,13 @@ def service_contact():
 def android():
     return render_template("android.html", portfolios=portfolios, service_name="android")
 
+@app.route("/ios-services/", methods=['GET'])
+def ios():
+    return render_template("ios.html", portfolios=portfolios, service_name="ios")
+
+@app.route("/web-development-services/", methods=['GET'])
+def web():
+    return render_template("web.html", portfolios=portfolios, service_name="web")
+
 if __name__ == "__main__":
     app.run()

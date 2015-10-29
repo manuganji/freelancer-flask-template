@@ -465,3 +465,15 @@ div.team-member {
 div.team-member .img-circle {
     max-width: 200px;
 }
+
+div.pitch p {
+    text-align: justify;
+}
+
+div.pitch .off-caps {
+    text-transform: none;
+}
+
+div.pitch ul.points {
+    font-size: large;
+}
