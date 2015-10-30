@@ -15,7 +15,7 @@
                     <div class="intro-text">
                         <span class="name">Start Bootstrap</span>
                         <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                        <span class="skills">Web and Mobile software consulting</span>
                     </div>
                 </div>
             </div>
@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="row">
-            {% for portfolio in portfolios %}
-                {{ portfolioitem(loop.index, portfolio.image) }}
+            {% for item in portfolio %}
+                {{ portfolioitem(loop.index, item.image) }}
             {% endfor %}
             </div>
         </div>
@@ -57,6 +57,7 @@
                     member.description, 
                     member.linkedin, 
                     member.twitter,
+                    member.facebook,
                     member.image
                 ) }}
             {% endfor %}
@@ -117,7 +118,7 @@
         </div>
     </section>
 
-    {% for portfolio in portfolios %}
-        {{ portfoliomodal(loop.index, portfolio.title, portfolio.image, portfolio.description, portfolio.client_name, portfolio.client_url, portfolio.date, portfolio.service) }}
+    {% for item in portfolio %}
+        {{ portfoliomodal(loop.index, item.title, item.image, item.description, item.client_name, item.client_url, item.date, item.service) }}
     {% endfor %}
 {% endblock %}

@@ -1,15 +1,23 @@
-{% macro person(id, name, position, description, linkedin, twitter, image) -%}
+{% macro person(id, name, position, description, linkedin, twitter, facebook, image) -%}
 <div class="col-sm-4">
     <div class="team-member">
         <center>
         <img src="/static/img/team/{{image}}" class="img-responsive img-circle" alt="">
         <h4>{{name}}</h4>
         <p class="">{{position}}</p>
+        <p class="">{{description}}</p>
         <ul class="list-inline">
+            {% if twitter %}
             <li><a class="btn-social btn-outline" target=_blank href="{{twitter}}"><i class="fa fa-twitter"></i></a>
+            {% endif %}
             </li>
+            {% if linkedin %}
             <li><a class="btn-social btn-outline" target=_blank href="{{linkedin}}"><i class="fa fa-linkedin"></i></a>
             </li>
+            {% endif %}
+            {% if facebook %}
+            <li><a class="btn-social btn-outline" target=_blank href="{{linkedin}}"><i class="fa fa-facebook"></i></a><li>
+            {% endif %}
         </ul>
         </center>
     </div>
