@@ -477,3 +477,8 @@ div.pitch .off-caps {
 div.pitch ul.points {
     font-size: large;
 }
+
+img.portfolio {
+    max-height: 200px;
+}
+

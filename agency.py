@@ -5,79 +5,13 @@ from flask import request
 from jinja2 import Environment, PackageLoader
 from forms import ContactForm, ServiceForm
 from flask_mail import Mail, Message
+from portfolio import items as portfolio
+from team import members as team
 
 env = Environment(loader=PackageLoader('agency', 'templates'))
 app = Flask(__name__)
 app.config.from_object('settings')
 mail = Mail(app)
-
-team = [
-    {
-        'name': 'Mallikarjuna Reddy',
-        'position': 'iOS Developer',
-        'description': '5 years of experience in iOS development',
-        'facebook': 'https://www.facebook.com/punuruMalli?fref=ts',
-        'linkedin': 'https://www.linkedin.com/pub/mallikarjuna-reddy-punuru/21/992/258',
-        'image': 'malli.jpg',
-    },
-    {
-        'name': 'Manu Ganji',
-        'position': 'Solution Architect',
-        'description': 'Generalist web programmer with 4 years of experience building industry leading technology',
-        'twitter': 'http://twitter.com/manuganji',
-        'linkedin': 'http://in.linkedin.com/in/manuganji',
-        'image': 'manu.jpeg',
-    },
-    {
-        'name': 'Rama Srinivas',
-        'position': 'Android Developer',
-        'description': 'Early employee at 3 Android startups',
-        'facebook': 'https://www.facebook.com/ramasrinivas.15990',
-        'linkedin': 'https://in.linkedin.com/pub/rama-srinivas/40/668/2b',
-        'image': 'srinivas.jpg',
-    }
-]
-
-portfolio = [
-    {
-        'title': 'Dres.sy',
-        'description': 'Dres.sy is a virtual Fitting Room for your store. Manu lead the development of Dres.sy beta for Imaginate software. It has many cutting edge features like Computer Vision, Async Task execution, Color clustering and some elements of Augmented Reality',
-        'image': 'dressy.png',
-        'client_name': 'Dres.sy',
-        'client_url': 'http://www.dres.sy',
-        'date': '2013',
-        'service': 'Web Development',
-    },
-    {
-        'title': 'Optmyzr',
-        'description': 'Optmyzr is a collection of Google AdWords Tools for Advertisers, Consultants, and Agencies. Manu worked as Senior Software Engineer for Optmyzr where he was responsible for maintenance and new feature development in One Click Optimizations and Data Insights',
-        'image': 'optmyzr_home.png',
-        'client_name': 'Optmyzr Inc',
-        'client_url': 'http://www.optmyzr.com',
-        'date': '2014-2015',
-        'service': 'Web Development',
-    },
-    {
-        'title': 'OMitra',
-        'description': """Rama was the sole developer on OMitra Android App. India's first app for alleviating problems encountered in train travel. Advanced live train tracking,
-        Wakup alarm, Train noticeboard, Important Railway contacts, Family trip tracking""",
-        'image': 'omitra.png',
-        'client_name': 'OMitra on Google Play',
-        'client_url': 'https://play.google.com/store/apps/details?id=com.train.omitraapp',
-        'date': '2014-2015',
-        'service': 'Android Development',
-    },
-    {
-        'title': 'RISSTA',
-        'description': """RISSTA – Railway Interactive Security Solution for Traveller’s Assistance.
-        This App is developed in collaboration with Secunderabad and Hyderabad RPF.""",
-        'image': 'rissta.png',
-        'client_name': 'RISSTA on Google Play',
-        'client_url': 'https://play.google.com/store/apps/details?id=com.omitrasaftyapp',
-        'date': '2015',
-        'service': 'Android Development',
-    }
-]
 
 @app.route("/")
 def index():
