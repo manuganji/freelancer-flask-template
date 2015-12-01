@@ -52,18 +52,24 @@ def service_contact():
     else:
         return json.dumps(form.errors), 400
 
+def filter_by(service_name):
+    return lambda x: service_name in x.get("service").lower()
+
+android_portfolio = filter(filter_by("android"), portfolio)
+ios_portfolio = filter(filter_by("ios"), portfolio)
+web_portfolio = filter(filter_by("web"), portfolio)
 
 @app.route("/android-services/", methods=['GET'])
 def android():
-    return render_template("android.html", portfolio=portfolio, service_name="android")
+    return render_template("android.html", portfolios=android_portfolio, service_name="android")
 
 @app.route("/ios-services/", methods=['GET'])
 def ios():
-    return render_template("ios.html", portfolio=portfolio, service_name="ios")
+    return render_template("ios.html", portfolios=ios_portfolio, service_name="ios")
 
 @app.route("/web-development-services/", methods=['GET'])
 def web():
-    return render_template("web.html", portfolio=portfolio, service_name="web")
+    return render_template("web.html", portfolios=web_portfolio, service_name="web")
 
 if __name__ == "__main__":
     app.run()

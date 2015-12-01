@@ -21,8 +21,8 @@
                 {% endblock %}
                 </div>
                 <br/>
-                <div class="row">
                 <h4>Portfolio</h4>
+                <div id="portfolio" class="row">
                 {% for portfolio in portfolios %}
                     {{ portfolioitem(loop.index, portfolio.image) }}
                 {% endfor %}
@@ -66,50 +66,8 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Location</label>
-                            <input type="text" class="form-control" placeholder="Location" name="location" required data-validation-required-message="Please enter your location."/>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label>Description</label>
-                            <textarea rows="1" class="form-control" placeholder="Description" name="overview" required data-validation-required-message="Please give us an overview."></textarea>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Project Progress</label>
-                            <textarea rows="1" class="form-control" placeholder="What is the current status of this project?" name="status"></textarea>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Expectations</label>
-                            <textarea rows="1" class="form-control" placeholder="What are your expectations from us?" name="expectations" required data-validation-required-message="Please tell us your expecations"></textarea>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Priority</label>
-                            <input type="text" class="form-control" placeholder="What is your priority?" name="priority" required data-validation-required-message="Please tell us your priorities for this project"/>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Budget</label>
-                            <input type="text" class="form-control" placeholder="What is the budget (or a range) ?" name="budget" required data-validation-required-message="Please indicate your budget range for this project"/>
-                            <p class="help-block text-warning"></p>
-                        </div>
-                    </div>
-                    <div class="row control-group">
-                        <div class="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Timeline</label>
-                            <input type="text" class="form-control" placeholder="What is the project timeline?" name="timeline" required data-validation-required-message="Please indicate your estimated timeline for the project delivery"/>
+                            <textarea rows="3" class="form-control" placeholder="Description" name="overview" required data-validation-required-message="Please give us an overview."></textarea>
                             <p class="help-block text-warning"></p>
                         </div>
                     </div>
