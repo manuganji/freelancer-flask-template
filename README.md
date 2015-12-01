@@ -9,7 +9,7 @@ How to run locally
 ---------------------------------------
 
 * Clone this repo to a local folder
-* Create a python 3 environment and activate it
+* Create a python 3 environment and activate it `pyvenv agency`
 * Install the requirements with `pip install -r requirements.txt`
 * Run the local server with `python agency.py`
 
